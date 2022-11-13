@@ -63,7 +63,7 @@ float snoise(float3 v)
   //float4 s1 = float4(lessThan(b1,0.0))*2.0 - 1.0;
   float4 s0 = floor(b0)*2.0 + 1.0;
   float4 s1 = floor(b1)*2.0 + 1.0;
-  float4 sh = -step(h, float4(0.0));
+  float4 sh = -step(h, float4(0.0, 0.0, 0.0, 0.0));
 
   float4 a0 = b0.xzyw + s0.xzyw*sh.xxyy ;
   float4 a1 = b1.xzyw + s1.xzyw*sh.zzww ;
@@ -83,6 +83,6 @@ float snoise(float3 v)
 // Mix final noise value
   float4 m = max(0.5 - float4(dot(x0,x0), dot(x1,x1), dot(x2,x2), dot(x3,x3)), 0.0);
   m = m * m;
-  return 105.0 * dot( m*m, float4( dot(p0,x0), dot(p1,x1), 
+  return 105.0 * dot( m*m, float4( dot(p0,x0), dot(p1,x1), //105.0 could also be 42.0?
                                 dot(p2,x2), dot(p3,x3) ) );
   }

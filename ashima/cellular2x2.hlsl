@@ -1,5 +1,3 @@
-#version 120
-
 // Cellular noise ("Worley noise") in 2D in GLSL.
 // Copyright (c) Stefan Gustavson 2011-04-19. All rights reserved.
 // This code is released under the conditions of the MIT license.
@@ -16,18 +14,18 @@
 // F1 is sometimes wrong, too, but OK for most purposes.
 float2 cellular2x2(float2 P) {
 #define K 0.142857142857 // 1/7
-#define K2 0.0714285714285 // K/2
-#define jitter 0.8 // jitter 1.0 makes F1 wrong more often
+#define K2_2x2 0.0714285714285 // K/2
+#define jitter2x2 0.8 // jitter 1.0 makes F1 wrong more often
 	float2 Pi = mod289(floor(P));
- 	float2 Pf = fract(P);
+ 	float2 Pf = frac(P);
 	float4 Pfx = Pf.x + float4(-0.5, -1.5, -0.5, -1.5);
 	float4 Pfy = Pf.y + float4(-0.5, -0.5, -1.5, -1.5);
 	float4 p = permute(Pi.x + float4(0.0, 1.0, 0.0, 1.0));
 	p = permute(p + Pi.y + float4(0.0, 0.0, 1.0, 1.0));
-	float4 ox = mod7(p)*K+K2;
-	float4 oy = mod7(floor(p*K))*K+K2;
-	float4 dx = Pfx + jitter*ox;
-	float4 dy = Pfy + jitter*oy;
+	float4 ox = mod7(p)*K+K2_2x2;
+	float4 oy = mod7(floor(p*K))*K+K2_2x2;
+	float4 dx = Pfx + jitter2x2*ox;
+	float4 dy = Pfy + jitter2x2*oy;
 	float4 d = dx * dx + dy * dy; // d11, d12, d21 and d22, squared
 	// Sort out the two smallest distances
 #if 0

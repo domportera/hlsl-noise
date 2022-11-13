@@ -1,3 +1,6 @@
+#ifndef __SPECIALMATH_HLSL__
+#define __SPECIALMATH_HLSL__
+
 // glsl style mod - thank you bgolus
 //https://forum.unity.com/threads/translating-a-glsl-shader-noise-algorithm-to-hlsl-cg.485750/#post-3164874
 #define mod(x, y) (x - y * floor(x / y))
@@ -68,6 +71,12 @@ float permute(float x)
      return mod289(((x*34.0)+1.0)*x);
 }
 
+// Permutation polynomial for the hash value
+float4 permute2(float4 x) {
+     float4 xm = mod(x, 289.0);
+     return mod(((xm*34.0)+10.0)*xm, 289.0);
+}
+
 
 float4 taylorInvSqrt(float4 r)
 {
@@ -109,3 +118,17 @@ float fade(float t)
 {
   return t*t*t*(t*(t*6.0-15.0)+10.0);
 }
+
+
+float  lt(float  a, float b){ return a<b?1.0:0.0;}
+float  lessThan(float  a, float b){ return lt(a,b); }
+float2 lessThan(float2 a, float2 b){ return float2(lt(a.x,b.x),lt(a.y,b.y) );}
+float3 lessThan(float3 a, float3 b){ return float3(lt(a.x,b.x),lt(a.y,b.y),lt(a.z,b.z) );}
+float4 lessThan(float4 a, float4 b){ return float4(lt(a.x,b.x),lt(a.y,b.y),lt(a.z,b.z),lt(a.w,b.w) );}
+
+float  gt(float  a, float b){ return a>b?1.0:0.0;}
+float  greaterThan(float  a, float b){ return gt(a,b); }
+float2 greaterThan(float2 a, float2 b){ return float2(gt(a.x,b.x),gt(a.y,b.y) );}
+float3 greaterThan(float3 a, float3 b){ return float3(gt(a.x,b.x),gt(a.y,b.y),gt(a.z,b.z) );}
+float4 greaterThan(float4 a, float4 b){ return float4(gt(a.x,b.x),gt(a.y,b.y),gt(a.z,b.z),gt(a.w,b.w) );}
+#endif // __SPECIALMATH_HLSL__
