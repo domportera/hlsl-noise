@@ -5,8 +5,10 @@
 //https://forum.unity.com/threads/translating-a-glsl-shader-noise-algorithm-to-hlsl-cg.485750/#post-3164874
 #define mod(x, y) (x - y * floor(x / y))
 
+// Modulo 289, optimizes to code without divisions in glsl, probably hlsl too (1.0 / 289.0 -> 0.0034602076124567)
 #define mod289(x) (x - floor(x * (1.0 / 289.0)) * 289.0)
 
+// Modulo 7 without a division, just like mod289
 #define mod7(x) (x - floor(x * (1.0 / 7.0)) * 7.0)
 
 // Permutation polynomial: (34x^2 + 6x) mod 289
