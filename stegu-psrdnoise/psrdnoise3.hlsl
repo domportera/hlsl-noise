@@ -85,7 +85,7 @@
 // around 10%.
 //
 
-#include "../special-math.hlsl"
+#include "../common/stegu-math.hlsl"
 
 float psrdnoise(float3 x, float3 period, float alpha, out float3 gradient)
 {
@@ -287,3 +287,6 @@ float psrdnoise(float3 x, float3 period, float alpha, out float3 gradient)
   // Scale the return value to fit nicely into the range [-1,1]
   return 39.5 * n;
 }
+
+// Adapted to HLSL by Dom Portera, published under the MIT license
+// https://github.com/domportera/hlsl-noise

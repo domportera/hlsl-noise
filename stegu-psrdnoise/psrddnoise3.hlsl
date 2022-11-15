@@ -88,7 +88,7 @@
 // none of "gradient", "dg" and "dg2" speeds up the function by 25-30%.
 //
 
-#include "../special-math.hlsl"
+#include "../common/stegu-math.hlsl"
 
 float psrddnoise(float3 x, float3 period, float alpha, out float3 gradient,
 	out float3 dg, out float3 dg2)
@@ -301,3 +301,6 @@ float psrddnoise(float3 x, float3 period, float alpha, out float3 gradient,
   // Scale the return value to fit nicely into the range [-1,1]
   return 39.5 * n;
 }
+
+// Adapted to HLSL by Dom Portera, published under the MIT license
+// https://github.com/domportera/hlsl-noise

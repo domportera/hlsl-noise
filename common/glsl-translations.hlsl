@@ -1,29 +1,22 @@
-#ifndef __SPECIALMATH_HLSL__
-#define __SPECIALMATH_HLSL__
+// There is no law to be found here.
+// Due to the nature of how generic and simple this is and how I found these solutions online from kind strangers,
+// I hereby excempt this file from the MIT licenses that shackle the rest of this repository.
+// The only license I claim is that you mustn't use this for evil,
+// unless an original author of one of these methods reaches out and insists on evil being permitted.
+// Copy and paste to your heart's content with no attribution required. 
+// - dom
+
+#ifndef __GLSL_TRANSLATIONS_HLSL__
+#define __GLSL_TRANSLATIONS_HLSL__
 
 // glsl style mod - thank you bgolus
 //https://forum.unity.com/threads/translating-a-glsl-shader-noise-algorithm-to-hlsl-cg.485750/#post-3164874
 #define mod(x, y) (x - y * floor(x / y))
 
-// Modulo 289, optimizes to code without divisions in glsl, probably hlsl too (1.0 / 289.0 -> 0.0034602076124567)
-#define mod289(x) (x - floor(x * (1.0 / 289.0)) * 289.0)
-
-// Modulo 7 without a division, just like mod289
-#define mod7(x) (x - floor(x * (1.0 / 7.0)) * 7.0)
-
-// Permutation polynomial: (34x^2 + 6x) mod 289
-#define permute(x) (mod289(((x*34.0)+1.0)*x))
-
-// Permutation polynomial for the hash value
-float4 permute2(float4 x) {
-     float4 xm = mod(x, 289.0);
-     return mod(((xm*34.0)+10.0)*xm, 289.0);
-}
-
-#define taylorInvSqrt(r) (1.79284291400159 - 0.85373472095314 * r)
-
-#define fade(t) (t*t*t*(t*(t*6.0-15.0)+10.0))
-
+// emulates glsl comparison functions
+// found the following somewhere online from someone who found it somewhere online.
+// they didn't remember who they found it from, i don't remember who i found it from.
+// I expect you to steal this and do the same. if you remember where you found it, pretend you don't
 float  lt(float a, float b){ return a < b ? 1.0 : 0.0;}
 float  lessThan(float  a, float b){ return lt(a,b); }
 float2 lessThan(float2 a, float2 b){ return float2(lt(a.x,b.x),lt(a.y,b.y) );}
@@ -35,4 +28,5 @@ float  greaterThan(float  a, float b){ return gt(a,b); }
 float2 greaterThan(float2 a, float2 b){ return float2(gt(a.x,b.x),gt(a.y,b.y) );}
 float3 greaterThan(float3 a, float3 b){ return float3(gt(a.x,b.x),gt(a.y,b.y),gt(a.z,b.z) );}
 float4 greaterThan(float4 a, float4 b){ return float4(gt(a.x,b.x),gt(a.y,b.y),gt(a.z,b.z),gt(a.w,b.w) );}
-#endif // __SPECIALMATH_HLSL__
+
+#endif //__GLSL_TRANSLATIONS_HLSL__

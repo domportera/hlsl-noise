@@ -65,7 +65,7 @@
 // of psrdnoise(), setting alpha == 0.0 gives no speedup.
 //
 
-#include "../special-math.hlsl"
+#include "../common/stegu-math.hlsl"
 
 float psrdnoise(float2 x, float2 period, float alpha, out float2 gradient) {
 
@@ -152,3 +152,6 @@ float psrdnoise(float2 x, float2 period, float alpha, out float2 gradient) {
 	// Scale the return value to fit nicely into the range [-1,1]
 	return 10.9 * n;
 }
+
+// Adapted to HLSL by Dom Portera, published under the MIT license
+// https://github.com/domportera/hlsl-noise

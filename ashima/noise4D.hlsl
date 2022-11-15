@@ -10,7 +10,7 @@
 //               https://github.com/stegu/webgl-noise
 // 
 
-#include "../special-math.hlsl"
+#include "../common/stegu-math.hlsl"
 
 float4 grad4(float j, float4 ip)
   {

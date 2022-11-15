@@ -12,7 +12,7 @@
 // https://github.com/stegu/webgl-noise
 //
 
-#include "../special-math.hlsl"
+#include "../common/stegu-math.hlsl"
 
 // Classic Perlin noise
 float cnoise(float4 P)
@@ -284,3 +284,6 @@ float pnoise(float4 P, float4 rep)
   float n_xyzw = lerp(n_yzw.x, n_yzw.y, fade_xyzw.x);
   return 2.2 * n_xyzw;
 }
+
+// Adapted to HLSL by Dom Portera, published under the MIT license
+// https://github.com/domportera/hlsl-noise

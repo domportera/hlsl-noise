@@ -4,7 +4,7 @@
 // See LICENSE file for details.
 // https://github.com/stegu/webgl-noise
 
-#include "../special-math.hlsl"
+#include "../common/stegu-math.hlsl"
 
 // Cellular noise, returning F1 and F2 in a float2.
 // 3x3x3 search region for good F2 everywhere, but a lot
@@ -170,3 +170,6 @@ float2 cellular(float3 P) {
 	return sqrt(d11.xy); // F1, F2
 #endif
 }
+
+// Adapted to HLSL by Dom Portera, published under the MIT license
+// https://github.com/domportera/hlsl-noise

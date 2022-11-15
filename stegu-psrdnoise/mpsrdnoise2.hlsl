@@ -10,7 +10,7 @@ precision mediump float;
 // ver. 2022-03-29, published under the MIT license:
 // https://github.com/stegu/psrdnoise/
 
-#include "../special-math.hlsl"
+#include "../common/stegu-math.hlsl"
 
 float mpsrdnoise(float2 x, float2 period, float alpha, out float2 gradient)
 {
@@ -61,3 +61,6 @@ float mpsrdnoise(float2 x, float2 period, float alpha, out float2 gradient)
 	gradient = 10.9*(dn0 + dn1 + dn2);
 	return 10.9*n;
 }
+
+// Adapted to HLSL by Dom Portera, published under the MIT license
+// https://github.com/domportera/hlsl-noise

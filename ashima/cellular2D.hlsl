@@ -4,7 +4,7 @@
 // See LICENSE file for details.
 // https://github.com/stegu/webgl-noise
 
-#include "../special-math.hlsl"
+#include "../common/stegu-math.hlsl"
 
 // Cellular noise, returning F1 and F2 in a float2.
 // Standard 3x3 search window for good F1 and F2 values
@@ -48,3 +48,6 @@ float2 cellular(float2 P) {
 	d1.y = min(d1.y, d2.x); // F2 is in d1.y, we're done.
 	return sqrt(d1.xy);
 }
+
+// Adapted to HLSL by Dom Portera, published under the MIT license
+// https://github.com/domportera/hlsl-noise

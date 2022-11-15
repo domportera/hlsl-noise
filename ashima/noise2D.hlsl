@@ -9,7 +9,7 @@
 //               https://github.com/stegu/webgl-noise
 // 
 
-#include "../special-math.hlsl"
+#include "../common/stegu-math.hlsl"
 
 float snoise(float2 v)
   {

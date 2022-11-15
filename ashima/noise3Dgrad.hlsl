@@ -10,7 +10,7 @@
 //               https://github.com/stegu/webgl-noise
 // 
 
-#include "../special-math.hlsl"
+#include "../common/stegu-math.hlsl"
 
 float snoise(float3 v, out float3 gradient)
 {

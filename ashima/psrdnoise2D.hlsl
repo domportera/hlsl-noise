@@ -67,7 +67,7 @@
 // (If you run into problems with this, please let me know.)
 //
 
-#include "../special-math.hlsl"
+#include "../common/stegu-math.hlsl"
 
 // Hashed 2-D gradients with an extra rotation.
 // (The constant 0.0243902439 is 1/41)
