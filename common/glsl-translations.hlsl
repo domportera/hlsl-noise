@@ -6,11 +6,11 @@
 // Copy and paste to your heart's content with no attribution required. 
 // - dom
 
-#ifndef __GLSL_TRANSLATIONS_HLSL__
-#define __GLSL_TRANSLATIONS_HLSL__
+#ifndef __GLSLTRANSLATIONS_HLSL__
+#define __GLSLTRANSLATIONS_HLSL__
 
 // glsl style mod - thank you bgolus
-//https://forum.unity.com/threads/translating-a-glsl-shader-noise-algorithm-to-hlsl-cg.485750/#post-3164874
+// https://forum.unity.com/threads/translating-a-glsl-shader-noise-algorithm-to-hlsl-cg.485750/#post-3164874
 #define mod(x, y) (x - y * floor(x / y))
 
 // emulates glsl comparison functions
@@ -29,4 +29,4 @@ float2 greaterThan(float2 a, float2 b){ return float2(gt(a.x,b.x),gt(a.y,b.y) );
 float3 greaterThan(float3 a, float3 b){ return float3(gt(a.x,b.x),gt(a.y,b.y),gt(a.z,b.z) );}
 float4 greaterThan(float4 a, float4 b){ return float4(gt(a.x,b.x),gt(a.y,b.y),gt(a.z,b.z),gt(a.w,b.w) );}
 
-#endif //__GLSL_TRANSLATIONS_HLSL__
+#endif //__GLSLTRANSLATIONS_HLSL__
