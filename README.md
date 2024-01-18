@@ -1,3 +1,5 @@
+Warning: I think this needs its matrix multiplication fix to account for GLSL and HLSL's differences in row-major vs column-major math
+
 Ports of [this library](https://github.com/ashima/webgl-noise) to HLSL. [This fork](https://github.com/stegu/webgl-noise) of the original library is your best source of information about these functions.
 
 I have also included and converted that latter fork's author's [improved simplex noise](https://github.com/stegu/psrdnoise/) as well.
