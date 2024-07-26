@@ -92,13 +92,14 @@ float psrdnoise(float3 x, float3 period, float alpha, out float3 gradient)
 
 #ifndef PERLINGRID
   // Transformation matrices for the axis-aligned simplex grid
-  const float3x3 M = float3x3(0.0, 1.0, 1.0,
+  // Convert matrices from column-major to row major for glsl -> hlsl using transpose()
+  const float3x3 M = transpose(float3x3(0.0, 1.0, 1.0,
                       1.0, 0.0, 1.0,
-                      1.0, 1.0, 0.0);
+                      1.0, 1.0, 0.0));
 
-  const float3x3 Mi = float3x3(-0.5, 0.5, 0.5,
+  const float3x3 Mi = transpose(float3x3(-0.5, 0.5, 0.5,
                         0.5,-0.5, 0.5,
-                        0.5, 0.5,-0.5);
+                        0.5, 0.5,-0.5));
 #endif
 
   float3 uvw;
